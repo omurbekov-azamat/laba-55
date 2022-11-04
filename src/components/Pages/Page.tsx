@@ -6,6 +6,7 @@ interface PageProps{
   image: string;
   count: number;
   onAddIngredient: React.MouseEventHandler;
+  onDeleteIngredient: React.MouseEventHandler;
 }
 
 const Page:React.FC<PageProps> = (props) => {
@@ -14,7 +15,7 @@ const Page:React.FC<PageProps> = (props) => {
         <img className='me-3' src={props.image} alt="" width='100px'/>
         <button onClick={props.onAddIngredient} className='btn btn-primary ms-3'>add {props.name}</button>
         <p className='ms-auto me-3'>x {props.count}</p>
-        <button className='btn btn-danger ms-3'>delete</button>
+        <button onClick={props.onDeleteIngredient} className='btn btn-danger ms-3'>delete</button>
       </div>
   );
 };

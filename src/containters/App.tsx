@@ -36,10 +36,20 @@ function App() {
     setIngredients(ingredientsCopy);
   };
 
+  const removeSomeIngredients = (index: number) => {
+    const ingredientsCopy = [...ingredients];
+    const ingredientCopy = {...ingredients[index]};
+    if (ingredientCopy.count > 0) {
+      ingredientCopy.count--;
+    }
+    ingredientsCopy[index] = ingredientCopy;
+    setIngredients(ingredientsCopy);
+  };
+
 
   return (
     <div className='my-container d-flex justify-content-between'>
-      <Pages pages={menu} count={getCount} addSomeIngredients={addSomeIngredients}/>
+      <Pages pages={menu} count={getCount} addSomeIngredients={addSomeIngredients} removeSomeIngredients={removeSomeIngredients}/>
       <div className="Burger bg-white">
         <div className="BreadTop">
           <div className="Seeds1"></div>

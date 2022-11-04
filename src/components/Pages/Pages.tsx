@@ -7,9 +7,10 @@ interface Props {
   pages: Menu[];
   count: (index: number) => number;
   addSomeIngredients: (index: number) => void;
+  removeSomeIngredients: (index:number) => void;
 }
 
-const Pages: React.FC<Props> = ({pages, count, addSomeIngredients}) => {
+const Pages: React.FC<Props> = ({pages, count, addSomeIngredients, removeSomeIngredients}) => {
   return (
     <div className='menu'>
       {pages.map((page, index: number) => (
@@ -20,6 +21,7 @@ const Pages: React.FC<Props> = ({pages, count, addSomeIngredients}) => {
           image={page.image}
           count={count(index)}
           onAddIngredient={() => addSomeIngredients(index)}
+          onDeleteIngredient={() => removeSomeIngredients(index)}
         />
       ))}
     </div>
