@@ -7,6 +7,7 @@ import baconImage from '../assets/bacon.png';
 import Pages from "../components/Pages/Pages";
 import './App.css'
 import Ingredients from "../components/Ingredients/Ingredients";
+import Price from "../components/Price/Price";
 
 const menu: Menu[] = [
   {name: 'Meat', price: 80, image: meatImage},
@@ -46,6 +47,13 @@ function App() {
     setIngredients(ingredientsCopy);
   };
 
+  const getTotalPrice = ingredients.reduce((acc, ingredient, currentIndex) => {
+    if (currentIndex === 0) {
+      return acc + 30 + menu[currentIndex].price * ingredient.count;
+    }
+    return acc + menu[currentIndex].price * ingredient.count;
+  },0);
+
 
   return (
     <div className='my-container d-flex justify-content-between'>
@@ -58,6 +66,7 @@ function App() {
         <Ingredients ingredients={ingredients}/>
         <div className="BreadBottom"></div>
       </div>
+      <Price price={getTotalPrice}/>
     </div>
   );
 }
