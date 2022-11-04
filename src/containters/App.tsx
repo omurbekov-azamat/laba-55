@@ -28,10 +28,18 @@ function App() {
     return ingredientCopy.count;
   };
 
+  const addSomeIngredients = (index:number) => {
+    const ingredientsCopy = [...ingredients];
+    const ingredientCopy = {...ingredients[index]};
+    ingredientCopy.count++;
+    ingredientsCopy[index] = ingredientCopy;
+    setIngredients(ingredientsCopy);
+  };
+
 
   return (
     <div className='my-container d-flex justify-content-between'>
-      <Pages pages={menu} count={getCount}/>
+      <Pages pages={menu} count={getCount} addSomeIngredients={addSomeIngredients}/>
       <div className="Burger bg-white">
         <div className="BreadTop">
           <div className="Seeds1"></div>

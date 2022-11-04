@@ -1,8 +1,11 @@
 import React from 'react';
-import {Menu} from "../../types";
 import './Ingredient.css';
 
-const Ingredient:React.FC<Menu> = (props) => {
+interface Ingredient {
+  name: string;
+}
+
+const Ingredient:React.FC<Ingredient> = (props) => {
   return (
     <div className={props.name}>
     </div>

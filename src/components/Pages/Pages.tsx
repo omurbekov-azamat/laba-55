@@ -5,19 +5,21 @@ import './Page.css'
 
 interface Props {
   pages: Menu[];
-  count: (index:number) => number;
+  count: (index: number) => number;
+  addSomeIngredients: (index: number) => void;
 }
 
-const Pages:React.FC<Props> = ({pages,count}) => {
+const Pages: React.FC<Props> = ({pages, count, addSomeIngredients}) => {
   return (
     <div className='menu'>
-      {pages.map((page, index:number) => (
+      {pages.map((page, index: number) => (
         <Page
           key={Math.random()}
           name={page.name}
           price={page.price}
           image={page.image}
           count={count(index)}
+          onAddIngredient={() => addSomeIngredients(index)}
         />
       ))}
     </div>
