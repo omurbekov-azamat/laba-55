@@ -4,6 +4,7 @@ import meatImage from '../assets/meat.png';
 import cheeseImage from '../assets/cheese.png';
 import saladImage from '../assets/salad.png';
 import baconImage from '../assets/bacon.png';
+import Page from "../components/Pages/Page";
 
 const menu: Menu[] = [
   {name: 'Meat', price: 80, image: meatImage},
@@ -14,7 +15,8 @@ const menu: Menu[] = [
 
 function App() {
   return (
-    <div>
+    <div className='container'>
+      <Page name={menu[0].name} price={menu[0].price} image={menu[0].image}/>
     </div>
   );
 }
