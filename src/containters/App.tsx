@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Menu} from "../types";
 import meatImage from '../assets/meat.png';
 import cheeseImage from '../assets/cheese.png';
 import saladImage from '../assets/salad.png';
 import baconImage from '../assets/bacon.png';
-import Page from "../components/Pages/Page";
+import Pages from "../components/Pages/Pages";
+import Ingredient from "../components/Ingredients/Ingredient";
+import './App.css'
 
 const menu: Menu[] = [
   {name: 'Meat', price: 80, image: meatImage},
@@ -14,9 +16,30 @@ const menu: Menu[] = [
 ];
 
 function App() {
+  const [ingredients, setIngredients] = useState([
+    {name: 'Meat', count: 0},
+    {name: 'Cheese', count: 0},
+    {name: 'Salad', count: 0},
+    {name: 'Bacon', count: 0},
+  ]);
+
+  const getCount = (index: number) => {
+    const ingredientCopy = {...ingredients[index]};
+    return ingredientCopy.count;
+  };
+
+
   return (
-    <div className='container'>
-      <Page name={menu[0].name} price={menu[0].price} image={menu[0].image}/>
+    <div className='my-container d-flex justify-content-between'>
+      <Pages pages={menu} count={getCount}/>
+      <div className="Burger bg-white">
+        <div className="BreadTop">
+          <div className="Seeds1"></div>
+          <div className="Seeds2"></div>
+        </div>
+        <Ingredient name={ingredients[0].name}/>
+        <div className="BreadBottom"></div>
+      </div>
     </div>
   );
 }
