@@ -6,7 +6,7 @@ interface PriceProps {
 
 const Price: React.FC<PriceProps> = (props) => {
   return (
-    <h1>Total price: {props.price}</h1>
+    <h2>Total price: {props.price}</h2>
   );
 };
 

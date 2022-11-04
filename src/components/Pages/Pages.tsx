@@ -1,7 +1,7 @@
 import React from 'react';
 import {Menu} from "../../types";
 import Page from "./Page";
-import './Page.css'
+import './Page.css';
 
 interface Props {
   pages: Menu[];

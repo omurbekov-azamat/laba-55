@@ -5,9 +5,10 @@ import cheeseImage from '../assets/cheese.png';
 import saladImage from '../assets/salad.png';
 import baconImage from '../assets/bacon.png';
 import Pages from "../components/Pages/Pages";
-import './App.css'
+import './App.css';
 import Ingredients from "../components/Ingredients/Ingredients";
 import Price from "../components/Price/Price";
+import Button from "../components/Button/Button";
 
 const menu: Menu[] = [
   {name: 'Meat', price: 80, image: meatImage},
@@ -29,7 +30,7 @@ function App() {
     return ingredientCopy.count;
   };
 
-  const addSomeIngredients = (index:number) => {
+  const addSomeIngredients = (index: number) => {
     const ingredientsCopy = [...ingredients];
     const ingredientCopy = {...ingredients[index]};
     ingredientCopy.count++;
@@ -52,13 +53,31 @@ function App() {
       return acc + 30 + menu[currentIndex].price * ingredient.count;
     }
     return acc + menu[currentIndex].price * ingredient.count;
-  },0);
+  }, 0);
 
+  const clearAllIngredients = () => {
+    setIngredients(prev => prev.map(ingredient => {
+      return {
+        ...ingredient,
+        count: 0,
+      }
+    }));
+  };
 
   return (
-    <div className='my-container d-flex justify-content-between'>
-      <Pages pages={menu} count={getCount} addSomeIngredients={addSomeIngredients} removeSomeIngredients={removeSomeIngredients}/>
-      <div className="Burger bg-white">
+    <div className='my-container d-flex justify-content-between align-items-center bg-white'>
+      <div>
+        <Pages pages={menu}
+               count={getCount}
+               addSomeIngredients={addSomeIngredients}
+               removeSomeIngredients={removeSomeIngredients}
+        />
+        <div className='d-flex justify-content-between align-items-center'>
+          <Price price={getTotalPrice}/>
+          <Button onClearAllIngredients={clearAllIngredients}/>
+        </div>
+      </div>
+      <div className="Burger">
         <div className="BreadTop">
           <div className="Seeds1"></div>
           <div className="Seeds2"></div>
@@ -66,7 +85,6 @@ function App() {
         <Ingredients ingredients={ingredients}/>
         <div className="BreadBottom"></div>
       </div>
-      <Price price={getTotalPrice}/>
     </div>
   );
 }
