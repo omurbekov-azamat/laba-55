@@ -1,11 +1,12 @@
 import React from 'react';
 import './Ingredient.css';
 
-interface Ingredient {
+interface IngredientProps {
   name: string;
+  count: number;
 }
 
-const Ingredient:React.FC<Ingredient> = (props) => {
+const Ingredient:React.FC<IngredientProps> = (props) => {
   return (
     <div className={props.name}>
     </div>

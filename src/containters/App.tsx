@@ -5,8 +5,8 @@ import cheeseImage from '../assets/cheese.png';
 import saladImage from '../assets/salad.png';
 import baconImage from '../assets/bacon.png';
 import Pages from "../components/Pages/Pages";
-import Ingredient from "../components/Ingredients/Ingredient";
 import './App.css'
+import Ingredients from "../components/Ingredients/Ingredients";
 
 const menu: Menu[] = [
   {name: 'Meat', price: 80, image: meatImage},
@@ -55,7 +55,7 @@ function App() {
           <div className="Seeds1"></div>
           <div className="Seeds2"></div>
         </div>
-        <Ingredient name={ingredients[0].name}/>
+        <Ingredients ingredients={ingredients}/>
         <div className="BreadBottom"></div>
       </div>
     </div>
